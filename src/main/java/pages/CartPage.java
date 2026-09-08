@@ -16,6 +16,9 @@ public class CartPage {
 
     public int getCartItemCount() {
         WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+
+        wait.until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("cart.html"));
+
         wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfAllElementsLocatedBy(cartItems));
         return driver.findElements(cartItems).size();
     }
