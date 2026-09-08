@@ -19,10 +19,17 @@ public abstract class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
 
+        boolean runningInCi = System.getenv("CI") != null;
+        if (runningInCi) {
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+        }
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
     }
+
 
     @AfterEach
     public void tearDown() {
