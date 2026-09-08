@@ -20,6 +20,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
 
       - name: Run tests
         run: mvn test
