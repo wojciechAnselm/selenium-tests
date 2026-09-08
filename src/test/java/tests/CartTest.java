@@ -35,7 +35,7 @@ public class CartTest extends BaseTest {
         inventoryPage.goToCart();
 
         CartPage cartPage = new CartPage(driver);
-        assertEquals(2, cartPage.getCartItemsCount(),
+        assertEquals(2, cartPage.getCartItemCount(),
                 "Cart page should list both products that were added");
     }
 }

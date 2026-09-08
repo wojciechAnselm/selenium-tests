@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage {
 
@@ -14,8 +14,9 @@ public class CartPage {
         this.driver = driver;
     }
 
-    /** Returns how many distinct product rows are listed in the cart. */
-    public int getCartItemsCount() {
+    public int getCartItemCount() {
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        wait.until(org.openqa.selenium.support.ui.ExpectedConditions.presenceOfAllElementsLocatedBy(cartItems));
         return driver.findElements(cartItems).size();
     }
 }
