@@ -3,7 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +27,10 @@ public class InventoryPage {
 
 
     public void addProductToCart(String productSlug) {
-        driver.findElement(By.id("add-to-cart-" + productSlug)).click();
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        By locator = By.id("add-to-cart-" + productSlug);
+        WebElement button = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(locator));
+        button.click();
     }
 
 
@@ -39,7 +44,9 @@ public class InventoryPage {
 
 
     public void goToCart() {
-        driver.findElement(cartLink).click();
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        WebElement cart = wait.until(org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable(cartLink));
+        cart.click();
     }
 
 
